@@ -574,7 +574,7 @@ impl TryFrom<NativeBlockingSerialPort> for SerialStream {
         let baud = port.baud_rate()?;
         let parity = port.parity()?;
         let data_bits = port.data_bits()?;
-        let stop_bits = port.stop_bits()?;
+        let stop_bits = port.stop_bits().unwrap_or(StopBits::One);
         let flow_control = port.flow_control()?;
 
         let mut path = Vec::<u16>::new();
